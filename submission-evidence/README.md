@@ -5,35 +5,39 @@ FestPass is a Java 21 campus event registration application. Jenkins compiles, t
 
 ## 2. Red-to-Green Evidence
 
-### Build #2 — FAILURE
-- Commit: `082633f31768c81e9fa988cdabef70b74f789f3b`
+### Build #6 — FAILURE
+- Class code: `001`
+- Challenge code: `00737`
+- Commit: `ea15a57d9e57588ef4a1b1b71c317098d1ef0e3b`
 - Cause: SCM change.
 - Result: 28 tests executed; 3 failures.
-- Failed assertion: `cancellationFreesSeat` — cancellation did not free a seat when the event was full.
+- Failed test: `cancellationFreesSeat`.
 - Additional failures: `cancellationsSurviveReload` and `cliWorkflowPersistsAcrossCommands`.
-- Gated stages: Build JAR, Smoke test JAR, and Save artifact were skipped.
-- Diagnostic evidence CSV was archived.
+- Skipped stages: Build JAR, Smoke test JAR, and Save artifact.
+- Diagnostic evidence CSV archived.
 
-### Build #3 — SUCCESS
-- Commit: `2e6a5e8044ca0840e87edbc4da210623eab4136a`
+### Build #7 — SUCCESS
+- Class code: `001`
+- Challenge code: `00737`
+- Commit: `4b02fa4a4550612f21d1547e82880417133e44ae`
 - Cause: SCM change.
 - Result: 28 tests passed, 0 failures.
 - JAR packaging succeeded.
 - Seven real-JAR smoke tests passed.
-- Final JAR and submission evidence CSV were archived.
+- Final JAR and submission evidence CSV archived.
 
 ## 3. Diagnosis and Fix
-The booking cancellation logic did not correctly handle seat availability when an event was sold out. This also affected cancellation persistence and the CLI workflow. The application fix restored the expected cancellation and seat-reuse behavior. The supplied tests were left unchanged.
+The booking cancellation logic did not correctly release a seat when an event was sold out. This also affected cancellation persistence and the CLI workflow. The fix restored cancellation, persistence, and seat-reuse behavior. Supplied tests were left unchanged.
 
 ## 4. Artifacts
-- `build-2-red/submission-evidence.csv`
-- `build-3-green/submission-evidence.csv`
-- `build-3-green/festpass.jar`
-- `build-3-green/build-info.txt`
-- `build-3-green/smoke-test.txt`
+- `build-6-red/submission-evidence.csv`
+- `build-7-green/submission-evidence.csv`
+- `build-7-green/festpass.jar`
+- `build-7-green/build-info.txt`
+- `build-7-green/smoke-test.txt`
 
 ## 5. Local Verification
-The application was executed locally. Event creation, successful bookings, sold-out rejection, cancellation, seat reuse, and persisted event data were verified.
+Event creation, bookings, sold-out rejection, cancellation, seat reuse, and persisted event data were verified locally.
 
 ## 6. Repository
 https://github.com/Raunak0000/CloudJenkinsLab

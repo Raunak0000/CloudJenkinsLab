@@ -1,2 +1,0 @@
-Application: FestPass
-Build Java: 21.0.12+8-1-24.04-Ubuntu
